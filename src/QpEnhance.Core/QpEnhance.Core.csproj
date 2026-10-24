@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- net8.0 so the VRCFaceTracking module (net8.0-windows) can reference this core. -->
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>QpEnhance.Core</AssemblyName>
+    <RootNamespace>QpEnhance.Core</RootNamespace>
+  </PropertyGroup>
+
+</Project>

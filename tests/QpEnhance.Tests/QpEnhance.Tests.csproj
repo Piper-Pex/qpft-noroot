@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- A self-contained console test runner: no external NuGet test packages, so it
+         builds and runs offline. Exit code is non-zero if any check fails. -->
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>QpEnhance.Tests</AssemblyName>
+    <RootNamespace>QpEnhance.Tests</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\QpEnhance.Core\QpEnhance.Core.csproj" />
+  </ItemGroup>
+
+</Project>
