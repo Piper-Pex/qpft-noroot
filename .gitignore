@@ -1,0 +1,15 @@
+# .NET
+bin/
+obj/
+*.user
+.vs/
+
+# Rider
+.idea/
+
+# Build output
+artifacts/
+dist/
+
+# VRCFaceTracking reference assemblies (host-supplied, not redistributed)
+src/QpEnhance.Module/libs/*.dll

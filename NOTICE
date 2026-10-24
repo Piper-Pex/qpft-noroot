@@ -1,0 +1,18 @@
+QpEnhance — un-rooted Quest Pro face/eye tracking enhancements for VRCFaceTracking.
+
+This project consumes the stock Meta "face tracking 2" (XR_FB_face_tracking2)
+70-blendshape signal that Virtual Desktop and Steam Link already expose on an
+un-rooted Quest Pro. It does not root the headset, modify headset firmware, or
+access any camera/eye data that Meta does not already expose to PC apps.
+
+Third-party references
+----------------------
+- The FB2 blendshape ordering follows the OpenXR XR_FB_face_tracking2 specification
+  (XrFaceExpression2FB), which is public.
+- The cheek-puff left/right separation approach was informed by the MIT-licensed
+  project n0tmast3r/Qpro-Enhanced-FT and its fork Fwooffy/Qpro-Enhanced-FT-Wireless.
+  No code was copied; the implementation here is original. Those projects target a
+  ROOTED Quest Pro for their gaze/tongue/pupil side channels, which this project
+  deliberately does not use.
+- VRCFaceTracking (github.com/benaclejames/VRCFaceTracking) is the host application
+  the module plugs into. Its assemblies are referenced, not redistributed.
