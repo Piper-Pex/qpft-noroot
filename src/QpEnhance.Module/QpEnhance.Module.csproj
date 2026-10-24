@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- VRCFaceTracking 5.4.5 runs on Windows / .NET 10. Match the host runtime. -->
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>QpEnhance.Module</AssemblyName>
+    <RootNamespace>QpEnhance.Module</RootNamespace>
+
+    <!-- Build as a loadable plugin: QpEnhance.Core.dll is copied next to the module. -->
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+
+    <!-- Where the VRCFaceTracking reference assemblies live. Override on the command
+         line (-p:VrcftLibs=...) or drop the DLLs into .\libs (see libs/README.md). -->
+    <VrcftLibs Condition="'$(VrcftLibs)' == ''">$(MSBuildProjectDirectory)\libs</VrcftLibs>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- ILogger. VRCFaceTracking already ships this at runtime, so do not copy it. -->
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.0">
+      <ExcludeAssets>runtime</ExcludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Provided by the VRCFaceTracking host at runtime; compile-time only. -->
+    <Reference Include="VRCFaceTracking.Core">
+      <HintPath>$(VrcftLibs)\VRCFaceTracking.Core.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="VRCFaceTracking.SDK">
+      <HintPath>$(VrcftLibs)\VRCFaceTracking.SDK.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <!-- Compile QpEnhance.Core's sources directly INTO this module instead of referencing
+       its DLL. VRCFaceTracking 5.4.x loads each module in a sandbox process whose
+       AssemblyLoadContext does not resolve sidecar dependency DLLs, so a separate
+       QpEnhance.Core.dll fails to load ("Could not load file or assembly 'QpEnhance.Core'").
+       Shipping one self-contained module DLL avoids that entirely. The Core project is
+       still built on its own for the tests and the config UI. -->
+  <ItemGroup>
+    <Compile Include="..\QpEnhance.Core\**\*.cs"
+             Exclude="..\QpEnhance.Core\obj\**\*.cs;..\QpEnhance.Core\bin\**\*.cs"
+             LinkBase="Core" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="module.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

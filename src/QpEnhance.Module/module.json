@@ -1,0 +1,13 @@
+{
+  "InstallationState": 0,
+  "ModuleId": "b2e1c7a4-6f3d-4a90-9c2e-7d1f0a5b4e33",
+  "Version": "0.1.0",
+  "IsLocal": true,
+  "AuthorName": "QpEnhance",
+  "ModuleName": "QpEnhance — Quest Pro (no-root)",
+  "ModuleDescription": "Enhances the stock Quest Pro face/eye signal from Virtual Desktop: gaze smoothing, openness calibration, cheek left/right separation and brow sensitivity. No root required.",
+  "DownloadUrl": "",
+  "ModulePageUrl": "",
+  "DllFileName": "QpEnhance.Module.dll",
+  "FileHash": null
+}
