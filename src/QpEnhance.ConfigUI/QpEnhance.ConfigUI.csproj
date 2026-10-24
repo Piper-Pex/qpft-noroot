@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <!-- Standalone tuning app. net10 desktop runtime is present (VRCFaceTracking 5.4.x
+         uses it), so this always has a runtime to launch against. -->
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>QpEnhance.ConfigUI</AssemblyName>
+    <RootNamespace>QpEnhance.ConfigUI</RootNamespace>
+    <ApplicationIcon />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Reuse the exact config type the module uses, so the JSON round-trips identically. -->
+    <ProjectReference Include="..\QpEnhance.Core\QpEnhance.Core.csproj" />
+  </ItemGroup>
+
+</Project>
